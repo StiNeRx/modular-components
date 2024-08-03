@@ -1,0 +1,45 @@
+const { MailtrapClient } = require("mailtrap");
+const { toBase64 } = require("./base64converter");
+const { API_TOKEN, SENDER_EMAIL, SENDER_NAME, RECIPENT_EMAIL, ENDPOINT_URL,SUBJECT, RECORDED_MESSAGE, ATTACHMENT_NAME } = require('./constants');
+
+// credentials for authentication
+
+const TOKEN = API_TOKEN;
+const ENDPOINT = ENDPOINT_URL;
+
+const client = new MailtrapClient({ endpoint: ENDPOINT, token: TOKEN });
+
+const sender = {
+  email: SENDER_EMAIL,
+  name: SENDER_NAME,
+};
+const recipients = [
+  {
+    email: RECIPENT_EMAIL,
+  }
+];
+
+
+function sendMail(ATTACHMENT_PATH) {
+    
+    const attachment_content = toBase64(ATTACHMENT_PATH);
+    client
+  .send({
+    from: sender,
+    to: recipients,
+    subject: SUBJECT,
+    text: RECORDED_MESSAGE,
+    attachments: [
+        {
+          filename: ATTACHMENT_NAME,
+          content_id: ATTACHMENT_NAME,
+          disposition: "inline",
+          content: attachment_content,
+        },
+    ],
+  })
+  .then(console.log, console.error);}
+
+module.exports = {
+    sendMail,
+}
