@@ -44,7 +44,7 @@ async function sendMail(ATTACHMENT_PATH) {
     ],
   })
   .then({
-     console.log("Success : " + STATUS_SUCCESS + "Email Sent"),console.error("email failed :")
+     console.log(),console.error()
   });
 
 }
