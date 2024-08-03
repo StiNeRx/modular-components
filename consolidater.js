@@ -25,7 +25,7 @@ try{
 
         const newWorkbook = excelModules.createExcel(SHEET, headerCells);
         const sheet = newWorkbook.getWorksheet( SHEET);
-        excelModules.addNewRow(sheet, rowValues);
+        await excelModules.addNewRow(sheet, rowValues);
         await newWorkbook.xlsx.writeFile(fileOutput);
         const response = mailer.sendMail(fileOutput, response);
         if (response.status == STATUS_SUCCESS) {
