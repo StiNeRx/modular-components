@@ -13,6 +13,9 @@ app.use((req, res, next) => {
     console.log(new Date(), req.url, req.method)
     next()
 })
+app.get('/', (req, res, next) => {
+    res.send('Welcome to Excel Consolidator API');
+})
 app.post('/', (req, res, next) => {
     try {
        if(req.body){
