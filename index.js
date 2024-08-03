@@ -1,8 +1,9 @@
 const express = require('express');
+const http = require('http');
 const mainModule = require('./consolidater.js');
 const { STATUS_SUCCESS, STATUS_INTERNAL_SERVER_ERROR, STATUS_FORBIDDEN, STATUS_NOT_FOUND } = require('./constants.js');
 
-const app = express()
+const app = express();
 
 app.use(express.json())
 app.use(express.urlencoded({
@@ -32,4 +33,4 @@ app.post('/mail', (req, res, next) => {
     }
 })
 // Starting server
-app.listen('8080')
+app.listen('3000');
