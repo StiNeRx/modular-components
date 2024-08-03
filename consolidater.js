@@ -27,7 +27,7 @@ try{
         const sheet = newWorkbook.getWorksheet( SHEET);
         // Promise.all(excelModules.addNewRow(sheet, rowValues), newWorkbook.xlsx.writeFile(fileOutput), mailer.sendMail(fileOutput) )
         await excelModules.addNewRow(sheet, rowValues);
-        await newWorkbook.xlsx.writeFile(fileOutput);
+        await newWorkbook.xlsx.writeFile('/tmp/'+ fileOutput);
         const response = await mailer.sendMail(fileOutput);
         if (response === undefined) {
             (console.log("Success Status :" + STATUS_SUCCESS)); 
