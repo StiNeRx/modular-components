@@ -24,12 +24,12 @@ const recipients = [
 ];
 
 
-function sendMail(ATTACHMENT_PATH, response) {
-    
+async function sendMail(ATTACHMENT_PATH) {
+    let response;
     console.log("inside sendMail");
     const attachment_content = toBase64(ATTACHMENT_PATH);
     client
-  .send({
+  .send( {
     from: sender,
     to: recipients,
     subject: SUBJECT,
@@ -43,8 +43,9 @@ function sendMail(ATTACHMENT_PATH, response) {
         },
     ],
   })
-  .then(response.status = STATUS_SUCCESS, response.status = STATUS_INTERNAL_SERVER_ERROR);
-  return STATUS_SUCCESS;
+  .then({
+    
+  });
 
 }
 

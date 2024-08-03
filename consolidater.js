@@ -13,7 +13,7 @@ const fileOutput = ATTACHMENT_NAME;
 
 
 
-async function main(rowValues, response) {
+async function main(rowValues) {
 try{
     // 
     
@@ -25,15 +25,17 @@ try{
 
         const newWorkbook = excelModules.createExcel(SHEET, headerCells);
         const sheet = newWorkbook.getWorksheet( SHEET);
+        // Promise.all(excelModules.addNewRow(sheet, rowValues), newWorkbook.xlsx.writeFile(fileOutput), mailer.sendMail(fileOutput) )
         await excelModules.addNewRow(sheet, rowValues);
         await newWorkbook.xlsx.writeFile(fileOutput);
-        const response = mailer.sendMail(fileOutput, response);
-        if (response.status == STATUS_SUCCESS) {
+        const response = await mailer.sendMail(fileOutput);
+        if (response === undefined) {
             (console.log("Success Status :" + STATUS_SUCCESS)); 
             return STATUS_SUCCESS;
         }
         else {
-            console.log("Error Status :" + STATUS_INTERNAL_SERVER_ERROR)
+            console.log("Error Status :" + STATUS_INTERNAL_SERVER_ERROR);
+            return STATUS_INTERNAL_SERVER_ERROR;
         }
     // }else {
     //     console.log("inside else");
