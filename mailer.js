@@ -1,6 +1,10 @@
 const { MailtrapClient } = require("mailtrap");
 const { toBase64 } = require("./base64converter");
-const { API_TOKEN, SENDER_EMAIL, SENDER_NAME, RECIPENT_EMAIL, ENDPOINT_URL,SUBJECT, RECORDED_MESSAGE, ATTACHMENT_NAME } = require('./constants');
+const { API_TOKEN, SENDER_EMAIL,
+    SENDER_NAME, RECIPENT_EMAIL,
+    ENDPOINT_URL,SUBJECT, RECORDED_MESSAGE,
+    ATTACHMENT_NAME, STATUS_SUCCESS,
+    STATUS_NOT_FOUND, STATUS_INTERNAL_SERVER_ERROR } = require('./constants');
 
 // credentials for authentication
 
@@ -20,8 +24,9 @@ const recipients = [
 ];
 
 
-function sendMail(ATTACHMENT_PATH) {
+function sendMail(ATTACHMENT_PATH, response) {
     
+    console.log("inside sendMail");
     const attachment_content = toBase64(ATTACHMENT_PATH);
     client
   .send({
@@ -38,7 +43,10 @@ function sendMail(ATTACHMENT_PATH) {
         },
     ],
   })
-  .then(console.log, console.error);}
+  .then(response.status = STATUS_SUCCESS, response.status = STATUS_INTERNAL_SERVER_ERROR);
+  return STATUS_SUCCESS;
+
+}
 
 module.exports = {
     sendMail,

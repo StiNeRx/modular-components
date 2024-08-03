@@ -1,7 +1,7 @@
 const excelModules = require("./excel.js")
 const fs = require("fs")
 // const mailerModules = require("./mailer.js");
-const {ATTACHMENT_NAME, HEADER_CELLS, ROW_VALUES, SHEET, STATUS_SUCCESS} = require("./constants");
+const {ATTACHMENT_NAME, HEADER_CELLS, ROW_VALUES, SHEET, STATUS_SUCCESS, STATUS_INTERNAL_SERVER_ERROR} = require("./constants");
 const mailer = require("./mailer.js");
 
 // Import the necessary modules
@@ -13,7 +13,7 @@ const fileOutput = ATTACHMENT_NAME;
 
 
 
-async function main(rowValues) {
+async function main(rowValues, response) {
 try{
     // 
     
@@ -27,10 +27,14 @@ try{
         const sheet = newWorkbook.getWorksheet( SHEET);
         excelModules.addNewRow(sheet, rowValues);
         await newWorkbook.xlsx.writeFile(fileOutput);
-        mailer.sendMail(fileOutput);  
-        (console.log("Success Status :" + STATUS_SUCCESS)); 
-
-        return STATUS_SUCCESS;
+        const response = mailer.sendMail(fileOutput, response);
+        if (response.status == STATUS_SUCCESS) {
+            (console.log("Success Status :" + STATUS_SUCCESS)); 
+            return STATUS_SUCCESS;
+        }
+        else {
+            console.log("Error Status :" + STATUS_INTERNAL_SERVER_ERROR)
+        }
     // }else {
     //     console.log("inside else");
     //     const workbook = excelModules.copyBook();

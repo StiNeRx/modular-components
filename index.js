@@ -23,7 +23,7 @@ app.post('/mail', (req, res, next) => {
 
         console.log(req.body.data);
         const jsonData = req.body.data;
-        const response = mainModule.main(jsonData);
+        const response = mainModule.main(jsonData,res);
         if (response === STATUS_SUCCESS);
             res.status(STATUS_SUCCESS).send({ status: STATUS_SUCCESS, message: 'Data processed successfully' });
 }

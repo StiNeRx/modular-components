@@ -57,7 +57,7 @@ function addNewSheet(workbook, sheetName, headerCells) {
 
 function addNewRow(worksheet, rowValue) {
     const newRow = worksheet.addRow(rowValue);
-    // console.log(newRow);
+    console.log("adding new row");
     return newRow;
 }
 
