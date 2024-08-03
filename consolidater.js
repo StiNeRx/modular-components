@@ -1,6 +1,6 @@
 const excelModules = require("./excel.js")
 const fs = require("fs")
-// const mailerModules = require("./mailer.js");
+const mailerModules = require("./mailer.js");
 const {ATTACHMENT_NAME, HEADER_CELLS, ROW_VALUES, SHEET, STATUS_SUCCESS, STATUS_INTERNAL_SERVER_ERROR} = require("./constants");
 const mailer = require("./mailer.js");
 
