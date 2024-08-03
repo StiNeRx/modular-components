@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 app.get('/', (req, res, next) => {
     res.send('Welcome to Excel Consolidator API');
 })
-app.post('/', (req, res, next) => {
+app.post('/mail', (req, res, next) => {
     try {
        if(req.body){
 
@@ -32,4 +32,4 @@ app.post('/', (req, res, next) => {
     }
 })
 // Starting server
-app.listen('1337')
+app.listen('8080')
