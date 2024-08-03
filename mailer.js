@@ -43,8 +43,14 @@ async function sendMail(ATTACHMENT_PATH) {
         },
     ],
   })
-  .then({
-     
+  .then(
+    (response) => {
+        console.log("Mail sent successfully");
+        console.log(response);
+        return STATUS_SUCCESS;
+    }
+  ).catch((err)=>{
+    console.log(err);
   });
 
 }
