@@ -44,7 +44,7 @@ async function sendMail(ATTACHMENT_PATH) {
     ],
   })
   .then({
-     console.log(),console.error()
+     
   });
 
 }
