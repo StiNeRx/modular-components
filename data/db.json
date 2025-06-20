@@ -1,0 +1,68 @@
+{
+    "slots": [
+        {
+            "id": "2025-06-25T10:00",
+            "date": "2025-06-25",
+            "time": "10:00",
+            "status": "booked",
+            "lockExpiresAt": null,
+            "customer": null
+        },
+        {
+            "id": "2025-06-25T10:30",
+            "date": "2025-06-25",
+            "time": "10:30",
+            "status": "available",
+            "lockExpiresAt": null,
+            "customer": null
+        },
+        {
+            "id": "2025-07-15T10:00",
+            "date": "2025-07-15",
+            "time": "10:00",
+            "status": "available",
+            "lockExpiresAt": null,
+            "customer": null
+        },
+        {
+            "id": "2025-07-15T10:30",
+            "date": "2025-07-15",
+            "time": "10:30",
+            "status": "available",
+            "lockExpiresAt": null,
+            "customer": null
+        },
+        {
+            "id": "2025-07-15T11:00",
+            "date": "2025-07-15",
+            "time": "11:00",
+            "status": "available",
+            "lockExpiresAt": null,
+            "customer": null
+        },
+        {
+            "id": "2025-07-15T11:30",
+            "date": "2025-07-15",
+            "time": "11:30",
+            "status": "available",
+            "lockExpiresAt": null,
+            "customer": null
+        },
+        {
+            "id": "2025-07-15T15:00",
+            "date": "2025-07-15",
+            "time": "15:00",
+            "status": "available",
+            "lockExpiresAt": null,
+            "customer": null
+        },
+        {
+            "id": "2025-07-15T15:30",
+            "date": "2025-07-15",
+            "time": "15:30",
+            "status": "available",
+            "lockExpiresAt": null,
+            "customer": null
+        }
+    ]
+}
